@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>LagerLogger</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link href="favicon.ico" rel="shortcut icon">
+
+
+    <link href="public/css/style.css" rel="stylesheet" />
+    <link href="public/mobile/jquery.mobile-1.2.0.min.css" rel="stylesheet" />
+
+    <link href="/public/img/touch-icon-iphone-114.png" rel="apple-touch-icon" />
+
+    <script src="public/js/jquery-1.8.0.min.js"></script>
+    <script src="public/mobile/jquery.mobile-1.2.0.min.js"></script>
+
+</head>
+<body>
+    <div id="fb-root"></div>
+
+    <!-- breweries list -->
+    <div data-role="page" id="breweries">
+
+        <div data-role="header" data-theme="e">
+
+            <div id="welcome"></div>
+
+               <a id="serverSync" href="#"
+                    class="ui-btn-left"
+                    data-icon="gear"
+                    data-transition="slidedown">Sync</a> 
+
+         <!--   <a href="#" id="fbLogin">
+                <img src="/public/img/fb_login.png"></a> -->
+
+            <h1>
+                LagerLogger</h1>
+            <a href="#addBrewery" id="addBreweryLink" class="ui-btn-right" data-icon="plus" data-theme="a" data-iconpos="notext" data-rel="dialog" data-transition="pop">Add</a>
+
+        </div>
+        <div data-role="content">
+            <ul data-role="listview" id="breweryList" data-filter="true" data-filter-placeholder="Filter Breweries..." data-autodividers="true" data-inset="true">
+            </ul>
+        </div>
+        <div data-role="footer" data-position="fixed" id="footer">
+
+            &copy; ajondeck
+        </div>
+    </div>
+
+    <!-- add brewery -->
+    <div data-role="page" id="addBrewery">
+        <div data-role="header" data-theme="e">
+            <h1>
+                Add Brewery</h1>
+        </div>
+        <div data-role="content">
+            <input type="text" id="brewerySearch" placeholder="Breweries">
+            <ul id="brewerySuggest" data-role="listview" data-inset="true">
+            </ul>
+        </div>
+    </div>
+
+    <!-- beers list -->
+    <div data-role="page" id="beers">
+        <div data-role="header" data-theme="e">
+            <a href="#breweries" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+            <h1>
+            </h1>
+            <a href="#addBeer" id="addBeerBtn" class="ui-btn-right" data-icon="plus" data-iconpos="notext"
+                data-theme="a" data-rel="dialog" data-transition="pop">Add</a>
+        </div>
+        <div data-role="content">
+            <ul data-role="listview" id="beerList" data-filter="true" data-filter-placeholder="Filter Beers..."
+                data-autodividers="true" data-inset="true">
+            </ul>
+        </div>
+    </div>
+
+    <!-- add beer -->
+    <div data-role="page" id="addBeer">
+        <div data-role="header" data-theme="e">
+            <h1>
+                Add Beer</h1>
+        </div>
+        <div data-role="content">
+            <input type="text" id="beerSearch" placeholder="Beers">
+            <ul id="beerSuggest" data-role="listview" data-inset="true">
+            </ul>
+        </div>
+    </div>
+    <div data-role="page" id="submitBeerForm">
+        <div data-role="header" data-theme="e">
+            <h1 id="beerName">
+                </h1>
+        </div>
+        <div data-role="content">
+            <input type="text" id="abv" placeholder="ABV">
+            <button id="submitBeer" data-theme="b">Add Beer</button>
+        </div>
+    </div>
+    <input type="hidden" value="" id="selectedBrewery" />
+
+    <script src="phonegap.js"></script>
+
+    <script src="public/js/amplify.store.js"></script>
+    <script src="public/js/jqm.autoComplete.min-1.4.2.js"></script>
+    <script src="public/js/jquery.tmpl.min.js"></script>
+    <script src="public/js/db.js"></script>
+    <script src="public/js/master.js"></script>
+    <script src="public/js/brewery.js"></script>
+    <script src="public/js/beer.js"></script>
+    <script src="public/js/util.js"></script>
+
+    <script id="breweryList_Tmpl" type="text/x-jquery-tmpl">
+
+		    <li>
+                <a href="#beers">${Name}<span class="ui-li-count">0</span></a>
+            </li>
+	
+    </script>
+
+    <script id="beerList_Tmpl" type="text/x-jquery-tmpl">
+
+		    <li data-beerid="${Id}">
+                ${Name}
+            </li>
+	
+    </script>
+
+</body>
+</html>
