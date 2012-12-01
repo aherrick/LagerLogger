@@ -11,7 +11,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'http://lagerlogger.apphb.com/API/AddBrewery',
+                url: 'http://lagerloggerapi.apphb.com/API/AddBrewery',
                 data: parms,
                 dataType: 'json',
                 success: function (data) {
@@ -29,7 +29,7 @@
     $('#brewerySearch').autocomplete({
 
         target: $('#brewerySuggest'),
-        source: 'http://lagerlogger.apphb.com/API/BreweryFilter',
+        source: 'http://lagerloggerapi.apphb.com/API/BreweryFilter',
         minLength: 2,
         link: '/',
         callback: function (e) {

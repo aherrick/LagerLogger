@@ -15,7 +15,7 @@
 
     $('#beerSearch').autocomplete({
         target: $('#beerSuggest'),
-        source: 'http://lagerlogger.apphb.com/API/BeerFilter?brewery=' + $('#selectedBrewery').val(),
+        source: 'http://lagerloggerapi.apphb.com/API/BeerFilter?brewery=' + $('#selectedBrewery').val(),
         link: '/',
         callback: function (e) {
 
@@ -41,7 +41,7 @@ $('#submitBeer').on('click', function () {
 
     $.ajax({
         type: 'POST',
-        url: 'http://lagerlogger.apphb.com/API/AddBeer',
+        url: 'http://lagerloggerapi.apphb.com/API/AddBeer',
         data: parms,
         dataType: 'json',
         success: function (data) {
